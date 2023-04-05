@@ -1,0 +1,38 @@
+package com.cision;
+
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
+
+ 
+
+public class KafkaSenderApplication {
+	public static void main(String[] args) {
+		
+		//prepare kafka Properties using java.util.Properties class obj
+		
+		Properties pros = new Properties();
+		
+		pros.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		pros.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+		pros.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+		
+		//create KafkaProducer object
+		
+		KafkaProducer<String,String> producer = new KafkaProducer<String,String>(pros);
+		
+		//Create Producer Record Object having topic name and Message
+		
+		ProducerRecord<String,String> record= new ProducerRecord<String,String>("nit-tpc","Welcome to Kafka messaging");
+		//send the message
+		producer.send(record);
+		//flush the message
+		producer.flush();
+		producer.close();
+		
+		
+	}
+}

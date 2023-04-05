@@ -1,0 +1,23 @@
+package com.cision;
+
+import java.util.Properties;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
+
+
+public class KafkaConsumerApp {
+	
+	public static void main(String[] args) {
+		//prepare kafka Properties using java.util.Properties class obj
+		
+				Properties pros = new Properties();
+				
+				pros.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+				pros.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+				pros.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+				pros.put(ConsumerConfig.GROUP_ID_CONFIG, "grp_1_cons");
+				
+	}
+
+}

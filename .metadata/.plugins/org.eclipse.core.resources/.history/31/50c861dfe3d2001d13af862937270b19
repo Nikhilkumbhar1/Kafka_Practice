@@ -1,0 +1,5 @@
+package com.cision.producer;
+
+public class MessageProducer {
+
+}
