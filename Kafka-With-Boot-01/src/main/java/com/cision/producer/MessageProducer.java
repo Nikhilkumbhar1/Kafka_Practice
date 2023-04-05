@@ -16,7 +16,7 @@ public class MessageProducer {
 	public String sendMessage(String msg) {
 
 		template.send("first-demo",msg);
-		return msg +"Message Sent";
+		return msg +" Message Sent";
 	}
 
 }
